@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+﻿// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "Joey/04 MyShader"
 {
@@ -9,6 +11,7 @@ Shader "Joey/04 MyShader"
             Tags{"LightMode"="ForwardBase"}
             CGPROGRAM
             //包含unity内置的文件
+            //取得第一个直射光的颜色 _LightColor0，第一个直射光的位置 _WorldSpaceLightPos0
             #include "Lighting.cginc" 
             #pragma vertex vert
             #pragma fragment frag
@@ -27,11 +30,15 @@ Shader "Joey/04 MyShader"
                 float3 color0:COLOR0;//这个语义可以由用户自己定义，一般都存储颜色
             };
 
+            
             v2f vert(a2v v)
             {
                 v2f vf;
                 vf.position = UnityObjectToClipPos(v.vertex);
-                vf.color0 = v.normal;
+                fixed3 normalDir = normalize(mul(v.normal,(float3x3)unity_WorldToObject));
+                fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz);//对于每个顶点来说，光的位置就是光的方向，因为光是平行光
+                fixed3 diffuse = _LightColor0.rgb * max(dot(normalDir,lightDir),0);//取得漫反射的颜色
+                vf.color0 = diffuse;
                 return vf;
             }
             fixed4 frag(v2f vf):SV_Target
