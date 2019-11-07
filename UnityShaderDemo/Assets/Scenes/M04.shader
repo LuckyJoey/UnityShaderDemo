@@ -4,6 +4,10 @@
 
 Shader "Joey/04 MyShader"
 {
+    Properties
+    {
+        _Diffuse("Diffuse Color" ,Color) = (1,1,1,1)
+    }
     SubShader
     {
         Pass
@@ -15,6 +19,8 @@ Shader "Joey/04 MyShader"
             #include "Lighting.cginc" 
             #pragma vertex vert
             #pragma fragment frag
+            
+            fixed3 _Diffuse;
             
             //application to vertex
             struct a2v
@@ -35,10 +41,11 @@ Shader "Joey/04 MyShader"
             {
                 v2f vf;
                 vf.position = UnityObjectToClipPos(v.vertex);
+                fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.rgb;
                 fixed3 normalDir = normalize(mul(v.normal,(float3x3)unity_WorldToObject));
                 fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz);//对于每个顶点来说，光的位置就是光的方向，因为光是平行光
-                fixed3 diffuse = _LightColor0.rgb * max(dot(normalDir,lightDir),0);//取得漫反射的颜色
-                vf.color0 = diffuse;
+                fixed3 diffuse = _LightColor0.rgb * max(dot(normalDir,lightDir),0)*_Diffuse.rgb;//取得漫反射的颜色
+                vf.color0 = diffuse + ambient;
                 return vf;
             }
             fixed4 frag(v2f vf):SV_Target
