@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M06-Specular
-  m_Shader: {fileID: 4800000, guid: a4360127bbe1082409331a8d2841f887, type: 3}
+  m_Shader: {fileID: 4800000, guid: fb579e232c3330246be459bd6889e8be, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -60,7 +60,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Gloss: 200
+    - _Gloss: 186
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1

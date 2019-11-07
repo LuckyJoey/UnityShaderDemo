@@ -66,6 +66,7 @@
     <None Include="Assets\Scenes\M02.shader" />
     <None Include="Assets\Scenes\M01.shader" />
     <None Include="Assets\Scenes\M04.shader" />
+    <None Include="Assets\Scenes\M08-Specular-fragment-BlinnPhong.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/GitProjects/Gitee/UnityShaderDemo/UnityShaderDemo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
