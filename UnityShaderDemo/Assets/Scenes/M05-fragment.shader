@@ -49,7 +49,9 @@ Shader "Joey/05 MyShader-fragment"
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.rgb;
                 fixed3 normalDir = vf.worldNormalDir ;
                 fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz);//对于每个顶点来说，光的位置就是光的方向，因为光是平行光
-                fixed3 diffuse = _LightColor0.rgb * max(dot(normalDir,lightDir),0)*_Diffuse.rgb;//取得漫反射的颜色
+                //兰伯特光照模型 _LightColor0.rgb * max(dot(normalDir,lightDir),0)
+                //半兰伯特光照模型 _LightColor0.rgb * dot(normalDir,lightDir)*0.5+0.5
+                fixed3 diffuse =( _LightColor0.rgb * dot(normalDir,lightDir)*0.5+0.5)*_Diffuse.rgb;//取得漫反射的颜色
                 fixed3 tempColor = diffuse + ambient;
             
                 return fixed4(tempColor,1);
