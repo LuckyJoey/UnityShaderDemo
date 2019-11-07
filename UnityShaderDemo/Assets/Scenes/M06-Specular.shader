@@ -9,6 +9,8 @@ Shader "Joey/06 MyShader-Specular"
     Properties
     {
         _Diffuse("Diffuse Color" ,Color) = (1,1,1,1)
+        _Gloss("Gloss",Range(8,200)) = 20
+        _Specular("Specular",Color) = (1,1,1,1)
     }
     SubShader
     {
@@ -23,6 +25,8 @@ Shader "Joey/06 MyShader-Specular"
             #pragma fragment frag
             
             fixed3 _Diffuse;
+            half _Gloss;
+            fixed4 _Specular;
             
             //application to vertex
             struct a2v
@@ -58,7 +62,7 @@ Shader "Joey/06 MyShader-Specular"
                 //视角方向
                 fixed3 viewDir =normalize( _WorldSpaceCameraPos.xyz - mul(v.vertex,unity_WorldToObject).xyz);
                 //高光反射光颜色
-                fixed3 specular = _LightColor0.rgb * pow(max(dot(reflectDir,viewDir),0),10);
+                fixed3 specular = _LightColor0.rgb* _Specular.rgb * pow(max(dot(reflectDir,viewDir),0),_Gloss);
                 vf.tempColor = diffuse + ambient + specular;
                 
                 return vf;
