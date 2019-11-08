@@ -61,6 +61,7 @@
     <Compile Include="Assets\Test.cs" />
     <None Include="Assets\Scenes\M05-fragment.shader" />
     <None Include="Assets\Scenes\M07-Specular-fragment.shader" />
+    <None Include="Assets\Scenes\M10-Specular.shader" />
     <None Include="Assets\Scenes\M06-Specular.shader" />
     <None Include="Assets\Scenes\M03-Struct.shader" />
     <None Include="Assets\Scenes\M02.shader" />
