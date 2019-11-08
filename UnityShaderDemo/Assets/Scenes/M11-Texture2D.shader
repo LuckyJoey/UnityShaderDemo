@@ -10,7 +10,7 @@ Shader "Joey/11 MyShader-Texture2D"
         _Color("Color",Color) = (1,1,1,1)
         //_Diffuse("Diffuse",Color) = (1,1,1,1)
         _Specular("Specular", Color) = (1,1,1,1)
-        _Gloss("Closs",Range(8,200))=20
+        _Gloss("Gloss",Range(8,200))=20
     }
     SubShader
     {
@@ -23,6 +23,7 @@ Shader "Joey/11 MyShader-Texture2D"
             #pragma fragment frag
             //fixed4 _Diffuse;
             sampler2D _Texture2D;
+            float4 _Texture2D_ST;
             fixed4 _Color;
             fixed4 _Specular;
             half _Gloss;
@@ -37,7 +38,7 @@ Shader "Joey/11 MyShader-Texture2D"
                 float4 svPos:SV_POSITION;
                 float3 worldNormal:TEXCOORD0;
                 float4 worldVertext:TEXCOORD1;
-                float4 uv:TEXCOORD2;
+                float2 uv:TEXCOORD2;
             };
             v2f vert(a2v v)
             {
@@ -45,7 +46,7 @@ Shader "Joey/11 MyShader-Texture2D"
                 f.svPos = UnityObjectToClipPos(v.vertex);
                 f.worldNormal = UnityObjectToWorldNormal(v.normal);
                 f.worldVertext = mul(unity_WorldToObject,v.vertex);
-                f.uv = v.texcoord0;
+                f.uv = v.texcoord0.xy*_Texture2D_ST.xy + _Texture2D_ST.zw;
                 return f;
             }
             fixed4 frag(v2f f):SV_Target
