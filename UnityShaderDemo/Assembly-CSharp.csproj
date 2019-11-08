@@ -64,6 +64,7 @@
     <None Include="Assets\Scenes\M10-Specular.shader" />
     <None Include="Assets\Scenes\M06-Specular.shader" />
     <None Include="Assets\Scenes\M03-Struct.shader" />
+    <None Include="Assets\Scenes\M11-Texture2D.shader" />
     <None Include="Assets\Scenes\M02.shader" />
     <None Include="Assets\Scenes\M01.shader" />
     <None Include="Assets\Scenes\M04.shader" />
