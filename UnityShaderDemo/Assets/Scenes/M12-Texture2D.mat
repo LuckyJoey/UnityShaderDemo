@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M11-Texture2D
-  m_Shader: {fileID: 4800000, guid: d1bf431ab01e7a744a799a2b56ef2483, type: 3}
+  m_Name: M12-Texture2D
+  m_Shader: {fileID: 4800000, guid: 95123db1495f05545a8c39b53559a6ca, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

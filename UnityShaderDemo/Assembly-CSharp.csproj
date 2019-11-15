@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scenes\ShaderDemo.cs" />
     <Compile Include="Assets\Test.cs" />
+    <None Include="Assets\Scenes\M12-Texture2D.shader" />
     <None Include="Assets\Scenes\M05-fragment.shader" />
     <None Include="Assets\Scenes\M07-Specular-fragment.shader" />
     <None Include="Assets\Scenes\M10-Specular.shader" />
